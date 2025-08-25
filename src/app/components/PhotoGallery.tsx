@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
+import ImageLightbox from "./ImageLightbox";
 
 interface Photo {
   id: number;
@@ -109,6 +113,30 @@ const photos: PhotoWithBody[] = [
 ];
 
 export default function PhotoGallery() {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const openLightbox = (index: number) => {
+    setCurrentImageIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+  };
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => 
+      (prev + 1) % photos.length
+    );
+  };
+
+  const previousImage = () => {
+    setCurrentImageIndex((prev) => 
+      (prev - 1 + photos.length) % photos.length
+    );
+  };
+
   return (
     <article className="min-h-screen bg-white">
       {/* Header */}
@@ -156,12 +184,12 @@ export default function PhotoGallery() {
       </header>
 
       {/* Gallery */}
-      <div className="max-w-none">
-        {photos.map((photo) => (
+      <div className="max-w-none pb-24 md:pb-32">
+        {photos.map((photo, index) => (
           <div key={photo.id} className="mb-8 md:mb-12">
             {/* Image */}
             <div className={`
-              relative mx-auto mb-1
+              relative mx-auto mb-1 cursor-pointer
               ${photo.id === 1 
                 ? 'w-[92%] md:w-[57.6%]' // Hero image
                 : 'w-[92%] md:w-[35%]'    // Standard images
@@ -172,9 +200,10 @@ export default function PhotoGallery() {
                 alt={photo.alt}
                 width={photo.orientation === "landscape" ? 1200 : 800}
                 height={photo.orientation === "landscape" ? 800 : 1200}
-                className="w-full h-auto"
+                className="w-full h-auto hover:opacity-95 transition-opacity duration-200"
                 style={{ objectFit: 'contain' }}
                 priority={photo.id === 1}
+                onClick={() => openLightbox(index)}
               />
             </div>
 
@@ -208,6 +237,16 @@ export default function PhotoGallery() {
           </div>
         ))}
       </div>
+
+      {/* Image Lightbox */}
+      <ImageLightbox
+        photos={photos}
+        currentIndex={currentImageIndex}
+        isOpen={lightboxOpen}
+        onClose={closeLightbox}
+        onNext={nextImage}
+        onPrevious={previousImage}
+      />
     </article>
   );
 }
