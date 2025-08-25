@@ -21,7 +21,7 @@ export default function AboutPage() {
           
           <p>
             You can customize this content to include your story, experience, artistic philosophy, 
-            and any other information you'd like to share with visitors.
+            and any other information you&apos;d like to share with visitors.
           </p>
         </div>
       </div>
