@@ -15,8 +15,8 @@ export const content: { [key: string]: ContentData } = {
   en: {
     header: {
       category: "Photography",
-      title: "Moments from Kerala",
-      subtitle: "A glimpse into the colorful culture and life of Kerala, India's southwestern state"
+      title: "Moments in Kerala",
+      subtitle: "A glimpse into the colorful culture and life of India's southwestern state, Kerala"
     },
     photos: {
       1: {

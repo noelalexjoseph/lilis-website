@@ -21,91 +21,91 @@ const photos: PhotoWithBody[] = [
   {
     id: 1,
     orientation: "landscape",
-    caption: "Lili Pentek • Kochi, Kerala • August 2025",
+    caption: "Lili Hajnal Péntek, Kerala, August 2024",
     alt: "Hero landscape photograph"
   },
   {
     id: 2,
     orientation: "landscape",
-    caption: "Lili Pentek • Kochi, Kerala • August 2025",
+    caption: "Lili Hajnal Péntek, Kerala, August 2024",
     alt: "Second landscape photograph"
   },
   {
     id: 3,
     orientation: "landscape",
-    caption: "Lili Pentek • Kochi, Kerala • August 2025",
+    caption: "Lili Hajnal Péntek, Kerala, August 2024",
     alt: "Third landscape photograph"
   },
   {
     id: 4,
     orientation: "landscape",
-    caption: "Lili Pentek • Kochi, Kerala • August 2025",
+    caption: "Lili Hajnal Péntek, Kerala, August 2024",
     alt: "Fourth landscape photograph"
   },
   {
     id: 5,
     orientation: "portrait",
-    caption: "Lili Pentek • Kochi, Kerala • August 2025",
+    caption: "Lili Hajnal Péntek, Kerala, August 2024",
     alt: "First portrait photograph"
   },
   {
     id: 6,
     orientation: "portrait",
-    caption: "Lili Pentek • Kochi, Kerala • August 2025",
+    caption: "Lili Hajnal Péntek, Kerala, August 2024",
     alt: "Second portrait photograph"
   },
   {
     id: 7,
     orientation: "portrait",
-    caption: "Lili Pentek • Kochi, Kerala • August 2025",
+    caption: "Lili Hajnal Péntek, Kerala, August 2024",
     alt: "Third portrait photograph"
   },
   {
     id: 8,
     orientation: "landscape",
-    caption: "Lili Pentek • Kochi, Kerala • August 2025",
+    caption: "Lili Hajnal Péntek, Kerala, August 2024",
     alt: "Fifth landscape photograph"
   },
   {
     id: 9,
     orientation: "landscape",
-    caption: "Lili Pentek • Kochi, Kerala • August 2025",
+    caption: "Lili Hajnal Péntek, Kerala, August 2024",
     alt: "Sixth landscape photograph"
   },
   {
     id: 10,
     orientation: "portrait",
-    caption: "Lili Pentek • Kochi, Kerala • August 2025",
+    caption: "Lili Hajnal Péntek, Kerala, August 2024",
     alt: "Fourth portrait photograph"
   },
   {
     id: 11,
     orientation: "landscape",
-    caption: "Lili Pentek • Kochi, Kerala • August 2025",
+    caption: "Lili Hajnal Péntek, Kerala, August 2024",
     alt: "Sixth landscape photograph"
   },
   {
     id: 12,
     orientation: "landscape",
-    caption: "Lili Pentek • Kochi, Kerala • August 2025",
+    caption: "Lili Hajnal Péntek, Kerala, August 2024",
     alt: "Seventh landscape photograph"
   },
   {
     id: 13,
     orientation: "landscape",
-    caption: "Lili Pentek • Kochi, Kerala • August 2025",
+    caption: "Lili Hajnal Péntek, Kerala, August 2024",
     alt: "Eighth landscape photograph"
   },
   {
     id: 14,
     orientation: "landscape",
-    caption: "Lili Pentek • Kochi, Kerala • August 2025",
+    caption: "Lili Hajnal Péntek, Kerala, August 2024",
     alt: "Ninth landscape photograph"
   },
   {
     id: 15,
     orientation: "portrait",
-    caption: "Lili Pentek • Kochi, Kerala • August 2025",
+    caption: "Lili Hajnal Péntek, Kerala, August 2024",
     alt: "Final portrait photograph"
   }
 ];
