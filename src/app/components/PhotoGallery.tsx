@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useState } from "react";
 import ImageLightbox from "./ImageLightbox";
+import { useLanguage } from "../context/LanguageContext";
+import { content } from "../lib/content";
 
 interface Photo {
   id: number;
@@ -20,8 +22,7 @@ const photos: PhotoWithBody[] = [
     id: 1,
     orientation: "landscape",
     caption: "Lili Pentek • Kochi, Kerala • August 2025",
-    alt: "Hero landscape photograph",
-    bodyText: "Body text directly after the hero image. This is the main introductory text that sets the tone for the entire gallery and provides context for the photographic journey ahead."
+    alt: "Hero landscape photograph"
   },
   {
     id: 2,
@@ -33,8 +34,7 @@ const photos: PhotoWithBody[] = [
     id: 3,
     orientation: "landscape",
     caption: "Lili Pentek • Kochi, Kerala • August 2025",
-    alt: "Third landscape photograph",
-    bodyText: "Shared body text that covers images #2-#3. This section discusses the connection between these two landscape photographs and their significance in the overall narrative."
+    alt: "Third landscape photograph"
   },
   {
     id: 4,
@@ -46,22 +46,19 @@ const photos: PhotoWithBody[] = [
     id: 5,
     orientation: "portrait",
     caption: "Lili Pentek • Kochi, Kerala • August 2025",
-    alt: "First portrait photograph",
-    bodyText: "Shared body text that covers images #4-#5. This section explores the transition from landscape to portrait orientation and the artistic choices behind this shift."
+    alt: "First portrait photograph"
   },
   {
     id: 6,
     orientation: "portrait",
     caption: "Lili Pentek • Kochi, Kerala • August 2025",
-    alt: "Second portrait photograph",
-    bodyText: "Body text specific to image #6. This portrait stands alone with its own narrative and artistic interpretation."
+    alt: "Second portrait photograph"
   },
   {
     id: 7,
     orientation: "portrait",
     caption: "Lili Pentek • Kochi, Kerala • August 2025",
-    alt: "Third portrait photograph",
-    bodyText: "Body text specific to image #7. Another individual portrait with its unique story and visual impact."
+    alt: "Third portrait photograph"
   },
   {
     id: 8,
@@ -73,17 +70,20 @@ const photos: PhotoWithBody[] = [
     id: 9,
     orientation: "landscape",
     caption: "Lili Pentek • Kochi, Kerala • August 2025",
-    alt: "Sixth landscape photograph",
-    bodyText: "Shared body text that covers images #8-#9. These landscape images work together to create a cohesive visual statement."
+    alt: "Sixth landscape photograph"
   },
   {
     id: 10,
     orientation: "portrait",
     caption: "Lili Pentek • Kochi, Kerala • August 2025",
-    alt: "Fourth portrait photograph",
-    bodyText: "Body text specific to image #10. This portrait marks a significant moment in the photographic sequence."
+    alt: "Fourth portrait photograph"
   },
-  // Note: #11 is missing from the photos directory
+  {
+    id: 11,
+    orientation: "landscape",
+    caption: "Lili Pentek • Kochi, Kerala • August 2025",
+    alt: "Sixth landscape photograph"
+  },
   {
     id: 12,
     orientation: "landscape",
@@ -94,8 +94,7 @@ const photos: PhotoWithBody[] = [
     id: 13,
     orientation: "landscape",
     caption: "Lili Pentek • Kochi, Kerala • August 2025",
-    alt: "Eighth landscape photograph",
-    bodyText: "Single shared body text that covers images #12-#13. These final landscape images provide a sense of closure to this section."
+    alt: "Eighth landscape photograph"
   },
   {
     id: 14,
@@ -107,14 +106,16 @@ const photos: PhotoWithBody[] = [
     id: 15,
     orientation: "portrait",
     caption: "Lili Pentek • Kochi, Kerala • August 2025",
-    alt: "Final portrait photograph",
-    bodyText: "Single shared body text that covers images #14-#15. The final pairing brings together landscape and portrait to conclude the visual narrative."
+    alt: "Final portrait photograph"
   }
 ];
 
 export default function PhotoGallery() {
+  const { currentLanguage } = useLanguage();
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  const currentContent = content[currentLanguage] || content.en;
 
   const openLightbox = (index: number) => {
     setCurrentImageIndex(index);
@@ -142,13 +143,13 @@ export default function PhotoGallery() {
       {/* Header */}
       <header className="text-center pt-12 pb-16">
         <div className="text-xs text-gray-600 uppercase tracking-wider mb-3 font-normal">
-          Photography
+          {currentContent.header.category}
         </div>
         <h1 className="text-4xl md:text-5xl font-normal mb-6 max-w-4xl mx-auto leading-tight text-black">
-          Onam
+          {currentContent.header.title}
         </h1>
         <p className="text-base text-gray-700 mb-8 max-w-2xl mx-auto leading-6 font-normal">
-          A photographic exploration of tradition and celebration in Kerala, capturing the essence of Onam through intimate moments and vibrant storytelling
+          {currentContent.header.subtitle}
         </p>
         
         {/* Social Icons */}
@@ -221,7 +222,7 @@ export default function PhotoGallery() {
             </div>
 
             {/* Body Text */}
-            {photo.bodyText && (
+            {(photo.bodyText || currentContent.photos[photo.id]?.bodyText) && (
               <div className={`
                 mx-auto mb-12 md:mb-16
                 ${photo.id === 1 
@@ -230,7 +231,7 @@ export default function PhotoGallery() {
                 }
               `}>
                 <p className="text-sm leading-6 text-gray-800 font-normal ml-4 md:ml-6">
-                  {photo.bodyText}
+                  {currentContent.photos[photo.id]?.bodyText || photo.bodyText}
                 </p>
               </div>
             )}

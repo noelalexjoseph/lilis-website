@@ -2,22 +2,24 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Header() {
-  const [currentLanguage, setCurrentLanguage] = useState("EN");
+  const { currentLanguage, setLanguage } = useLanguage();
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
 
   const languages = [
-    { code: "EN", name: "English" },
-    { code: "HU", name: "Hungarian" },
-    { code: "DE", name: "German" }
+    { code: "en", name: "English", display: "EN" },
+    { code: "hu", name: "Hungarian", display: "HU" },
+    { code: "de", name: "German", display: "DE" }
   ];
 
-  const handleLanguageChange = (languageCode: string) => {
-    setCurrentLanguage(languageCode);
+  const handleLanguageChange = (languageCode: "en" | "hu" | "de") => {
+    setLanguage(languageCode);
     setIsLanguageDropdownOpen(false);
-    // TODO: Implement actual language switching logic
   };
+
+  const currentLangDisplay = languages.find(lang => lang.code === currentLanguage)?.display || "EN";
 
   return (
     <header className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
@@ -46,7 +48,7 @@ export default function Header() {
                 onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
                 className="flex items-center space-x-1 text-gray-700 hover:text-black transition-colors duration-200 font-normal text-sm"
               >
-                <span>{currentLanguage}</span>
+                <span>{currentLangDisplay}</span>
                 <svg 
                   className={`w-4 h-4 transition-transform duration-200 ${isLanguageDropdownOpen ? 'rotate-180' : ''}`}
                   fill="none" 
@@ -63,7 +65,7 @@ export default function Header() {
                   {languages.map((language) => (
                     <button
                       key={language.code}
-                      onClick={() => handleLanguageChange(language.code)}
+                      onClick={() => handleLanguageChange(language.code as "en" | "hu" | "de")}
                       className={`block w-full text-left px-4 py-2 text-sm transition-colors duration-150 ${
                         currentLanguage === language.code
                           ? 'bg-gray-50 text-black font-medium'
