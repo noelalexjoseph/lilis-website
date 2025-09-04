@@ -27,20 +27,13 @@ export default function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <div className="text-xl font-normal text-black tracking-normal">
-              Lili Pentek
+            <div className="text-xl font-normal text-black tracking-normal" style={{ fontFamily: 'Garamond, "Adobe Garamond Pro", "EB Garamond", serif' }}>
+              Lili Hajnal Péntek
             </div>
           </Link>
 
           {/* Navigation */}
           <nav className="flex items-center space-x-8">
-            {/* About Me */}
-            <Link 
-              href="/about" 
-              className="text-gray-700 hover:text-black transition-colors duration-200 font-normal text-sm"
-            >
-              About me
-            </Link>
 
             {/* Language Switcher */}
             <div className="relative">
