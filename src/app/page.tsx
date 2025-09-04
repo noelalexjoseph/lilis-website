@@ -1,5 +1,5 @@
-import Homepage from "./components/Homepage";
+import PhotoGallery from "./components/PhotoGallery";
 
 export default function Home() {
-  return <Homepage />;
+  return <PhotoGallery />;
 }
